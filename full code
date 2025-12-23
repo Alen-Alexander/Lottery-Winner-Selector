@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lottery Winner Selection</title>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>Lottery Winner</h1>
+<button onclick="result()"> Check Winner</button>
+<p style="color: red;" id="result"></p>
+
+<div class="modal" id="winnerModal" area-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Winner</h5>
+				<button type="button" class="close" data-dismiss="modal"> X
+				</button>
+			</div>
+			<div class="modal-body" id="modalWinnerTicket"></div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	const tickets = [101,202,303,404,505];
+	function result() {
+		const winner = tickets[Math.floor(Math.random() * tickets.length)]
+		console.log(winner);
+
+		document.getElementById('result').innerHTML = "Winner is "+winner
+
+		document.getElementById("modalWinnerTicket").innerHTML = "The winning ticket is: "+winner;
+
+		const modal = new bootstrap.Modal(document.getElementById("winnerModal"));
+        modal.show()	
+	}
+</script>
+</body>
+</html>
